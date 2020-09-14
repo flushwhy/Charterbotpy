@@ -29,7 +29,8 @@ if __name__ == '__main__':
 async def on_ready():
     print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
 
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'USE \'. , ? , or cb.\' TO TEST COMMANDS! Discordpy verison: {discord.__version__}'))
+    await bot.change_presence(status=discord.Status.online,
+    activity=discord.Game(f'USE \'. , ? , or cb.\' TO TEST COMMANDS! Discordpy verison: {discord.__version__}'))
     print(f'Successfully logged in and booted...!')
 
 
