@@ -1,4 +1,5 @@
 import discord
+import requests
 from discord.ext import commands
 from jokeapi import Jokes
 
@@ -8,7 +9,7 @@ class metaCog(commands.Cog):
 
 
     @commands.command(name='joke', aliases=['tellme','life','thetelling'])
-    async def nemamemes(self, ctx, oftype: str, ):
+    async def nemamemes(self, ctx,):
 
         j = Jokes()
         joke = j.get_joke()[0]
@@ -17,6 +18,13 @@ class metaCog(commands.Cog):
         else:
             await ctx.send(joke["setup"])
             await ctx.send("|| " + joke["delivery"] + " ||")
+
+    @commands.command(name='program', aliases=['pgquotes'])
+    async def programingquotes(self, ctx):
+
+        response = requests.get("https://programming-quotes-api.herokuapp.com/quotes/random")
+
+        await ctx.send(response.status_code)
 
 def setup(bot):
     bot.add_cog(metaCog(bot))
