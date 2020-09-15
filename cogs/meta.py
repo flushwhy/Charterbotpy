@@ -41,7 +41,7 @@ class metaCog(commands.Cog):
                             description="Quote: " + quotes_qq,
                             color=0x69daf1)
 
-        embed.set_image(url="https://robohash.org/RoFlush")
+        embed.set_image(url="https://robohash.org/RoFlush.png")
         embed.set_footer(text= "Author: " + author_qq + " // " + "Created by RoFlush")
         await ctx.send(embed=embed)
 
@@ -56,6 +56,65 @@ class metaCog(commands.Cog):
 
         await ctx.send(quote_ron)
 
+
+    @commands.command(name='mcode', aliases=['mosecode'])
+    async def mose(self, ctx):
+
+
+        await ctx.send("Coming soon")
+
+
+    @commands.command(name='deepfake', aliases=['FakeDI'])
+    async def randomuserid(self, ctx):
+
+        response = requests.get("https://randomuser.me/api/")
+
+        # Pullling info from the request
+        gender_qq = response.json()['gender']
+        name_qq = response.json()['first', 'last']
+        email_qq = response.json()['email']
+        username_qq = response.json()['username']
+        picture_qq = response.json()['large']
+
+        embed=discord.Embed(title="Powered by Random names",
+                            url="randomuser.me",
+                            description="Thought it would be cool if I used it to get fake IDs!",
+                            color=0x69daf1)
+
+        embed.add_field(name="gender",value=gender_qq, inline=True)
+        embed.add_field(name="name", value=name_qq, inline=True)
+        embed.add_field(name="Email", value=email_qq, inline=True)
+        embed.add_field(name="username", value=username_qq, inline=True)
+        embed.set_image(url=picture_qq)
+        embed.set_footer(text="Created by RoFlush")
+
+
+
+    @commands.command(name='clean', aliases=['remove'], pass_context=True)
+    @commands.has_permissions(administrator=True)
+    async def clean(self, ctx, limit: int):
+        """Cleans out a textchat of trash."""
+        await ctx.channel.purge(limit=limit)
+        await ctx.send('Cleared by {}'.format(ctx.author.mention))
+
+    @clean.error
+    async def clear_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send("You cant do that!")
+
+    @commands.command(name='avatar', aliases=['custom'])
+    async def custom_avatar(self, ctx, name):
+
+        response = requests.get(f"https://api.adorable.io/avatars/285/{name}@adorable.io.png")
+
+        embed=discord.Embed(title="Powered by aborable.io",
+                                    url="http://avatars.adorable.io/",
+                                    color=0x69daf1)
+
+        embed.set_image(url=response)
+        embed.set_footer(text="Created by RoFlush")
+
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(metaCog(bot))

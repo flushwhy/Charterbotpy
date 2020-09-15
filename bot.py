@@ -19,7 +19,7 @@ initial_extensions = [ 'cogs.nema',
                        'cogs.meta', ]
 
 
-bot = commands.Bot(command_prefix=get_prefixes, description='needs help')
+bot = commands.Bot(command_prefix=get_prefixes, description='Charter Bot is the only chartered bot!')
 
 if __name__ == '__main__':
     for extension in initial_extensions:
@@ -30,7 +30,7 @@ async def on_ready():
     print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
 
     await bot.change_presence(status=discord.Status.online,
-    activity=discord.Game(f'USE \'. , ? , or cb.\' TO TEST COMMANDS! Discordpy verison: {discord.__version__}'))
+    activity=discord.Game(f'USE \'. , ? , or cb.\' TO TEST COMMANDS!'))
     print(f'Successfully logged in and booted...!')
 
 
