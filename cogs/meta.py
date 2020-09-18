@@ -48,47 +48,44 @@ class metaCog(commands.Cog):
     # Doesn't work, Will fix later.
     @commands.command(name='ron', aliases=['Swanson', 'ronswanson', 'ron-swanson'])
     async def RonSwanson_parks(self, ctx):
-
+        '''This returns a random line form Ron Swason.'''
 
         response = requests.get("https://ron-swanson-quotes.herokuapp.com/v2/quotes")
 
-        quote_ron = response.json.dumps()
-
-        await ctx.send(quote_ron)
+        quote_ron = response.json()
+    
+        await ctx.send(quote_ron[0])
 
 
     @commands.command(name='mcode', aliases=['mosecode'])
     async def mose(self, ctx):
-
+        '''This is going to be a translater for something soon.'''
 
         await ctx.send("Coming soon")
 
 
     @commands.command(name='deepfake', aliases=['FakeDI'])
     async def randomuserid(self, ctx):
+        '''Retruns randomly made user info.'''
 
         response = requests.get("https://randomuser.me/api/")
 
         # Pullling info from the request
-        gender_qq = response.json()['gender']
-        name_qq = response.json()['first', 'last']
-        email_qq = response.json()['email']
-        username_qq = response.json()['username']
-        picture_qq = response.json()['large']
+        info_qq = response.json()['results']
 
-        embed=discord.Embed(title="Powered by Random names",
+        embed=discord.Embed(title="Powered by Random User . ME",
                             url="randomuser.me",
                             description="Thought it would be cool if I used it to get fake IDs!",
                             color=0x69daf1)
 
-        embed.add_field(name="gender",value=gender_qq, inline=True)
-        embed.add_field(name="name", value=name_qq, inline=True)
-        embed.add_field(name="Email", value=email_qq, inline=True)
-        embed.add_field(name="username", value=username_qq, inline=True)
-        embed.set_image(url=picture_qq)
+        embed.add_field(name="gender",value=info_qq[0]['gender'], inline=True)
+        embed.add_field(name="name", value=info_qq[0]['name'], inline=True)
+        embed.add_field(name="Email", value=info_qq[0]['email'], inline=True)
+        embed.add_field(name="User name", value=info_qq[0]['login']['username'], inline=True)
+        embed.set_image(url=info_qq[0]['picture']['large'])
         embed.set_footer(text="Created by RoFlush")
 
-
+        await ctx.send(embed= embed)
 
     @commands.command(name='clean', aliases=['remove'], pass_context=True)
     @commands.has_permissions(administrator=True)
@@ -103,15 +100,17 @@ class metaCog(commands.Cog):
             await ctx.send("You cant do that!")
 
     @commands.command(name='avatar', aliases=['custom'])
-    async def custom_avatar(self, ctx, name):
-
+    async def custom_avatar(self, ctx, name: str):
+        '''This doesn't work please don't use.'''
         response = requests.get(f"https://api.adorable.io/avatars/285/{name}@adorable.io.png")
+
+        get_img = response.json()
 
         embed=discord.Embed(title="Powered by aborable.io",
                                     url="http://avatars.adorable.io/",
                                     color=0x69daf1)
 
-        embed.set_image(url=response)
+        embed.set_image(url=get_img[0])
         embed.set_footer(text="Created by RoFlush")
 
         await ctx.send(embed=embed)
