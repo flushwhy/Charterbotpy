@@ -45,7 +45,7 @@ class metaCog(commands.Cog):
         embed.set_footer(text= "Author: " + author_qq + " // " + "Created by RoFlush")
         await ctx.send(embed=embed)
 
-    # Doesn't work, Will fix later.
+    
     @commands.command(name='ron', aliases=['Swanson', 'ronswanson', 'ron-swanson'])
     async def RonSwanson_parks(self, ctx):
         '''This returns a random line form Ron Swason.'''
@@ -53,8 +53,13 @@ class metaCog(commands.Cog):
         response = requests.get("https://ron-swanson-quotes.herokuapp.com/v2/quotes")
 
         quote_ron = response.json()
-    
-        await ctx.send(quote_ron[0])
+
+        embed=discord.Embed(title="Powered by the Ron Swanson Quotes API",
+                            url="https://ron-swanson-quotes.herokuapp.com",
+                            description=quote_ron[0],
+                            color=0xf1c40f)
+
+        await ctx.send(embed=embed)
 
 
     @commands.command(name='mcode', aliases=['mosecode'])
@@ -76,13 +81,20 @@ class metaCog(commands.Cog):
         embed=discord.Embed(title="Powered by Random User . ME",
                             url="randomuser.me",
                             description="Thought it would be cool if I used it to get fake IDs!",
-                            color=0x69daf1)
+                            color=0xe67e22)
 
-        embed.add_field(name="gender",value=info_qq[0]['gender'], inline=True)
-        embed.add_field(name="name", value=info_qq[0]['name'], inline=True)
-        embed.add_field(name="Email", value=info_qq[0]['email'], inline=True)
-        embed.add_field(name="User name", value=info_qq[0]['login']['username'], inline=True)
-        embed.set_image(url=info_qq[0]['picture']['large'])
+        #Defining Vars because discord
+        gender_qq = info_qq[0]['gender']
+        name_qq = info_qq[0]['name']
+        email_qq = info_qq[0]['email']
+        username_qq = info_qq[0]['login']['username']
+        large_pic_qq = info_qq[0]['picture']['large']
+
+        embed.add_field(name="gender",value=gender_qq, inline=True)
+        embed.add_field(name="name", value=name_qq, inline=True)
+        embed.add_field(name="Email", value=email_qq, inline=True)
+        embed.add_field(name="Username", value=username_qq, inline=True)
+        embed.set_image(url=large_pic_qq)
         embed.set_footer(text="Created by RoFlush")
 
         await ctx.send(embed= embed)
