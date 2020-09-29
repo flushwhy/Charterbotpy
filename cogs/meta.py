@@ -13,7 +13,6 @@ class metaCog(commands.Cog):
     async def nemamemes(self, ctx,):
         '''Tells you a joke!'''
 
-
         j = Jokes()
         joke = j.get_joke()[0]
         if joke["type"] == "single":
@@ -99,10 +98,11 @@ class metaCog(commands.Cog):
 
         await ctx.send(embed= embed)
 
-    @commands.command(name='clean', aliases=['remove'], pass_context=True)
+    @commands.command(name='clean', aliases=['remove', 'clear'], pass_context=True)
     @commands.has_permissions(administrator=True)
     async def clean(self, ctx, limit: int):
         """Cleans out a textchat of trash."""
+
         await ctx.channel.purge(limit=limit)
         await ctx.send('Cleared by {}'.format(ctx.author.mention))
 
