@@ -114,6 +114,7 @@ class metaCog(commands.Cog):
     @commands.command(name='avatar', aliases=['custom'])
     async def custom_avatar(self, ctx, name: str):
         '''This doesn't work please don't use.'''
+        
         response = requests.get(f"https://api.adorable.io/avatars/285/{name}@adorable.io.png")
 
         get_img = response.json()
