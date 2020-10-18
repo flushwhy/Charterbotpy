@@ -13,7 +13,6 @@ class metaCog(commands.Cog):
     async def nemamemes(self, ctx,):
         '''Tells you a joke!'''
 
-
         j = Jokes()
         joke = j.get_joke()[0]
         if joke["type"] == "single":
@@ -58,15 +57,44 @@ class metaCog(commands.Cog):
                             url="https://ron-swanson-quotes.herokuapp.com",
                             description=quote_ron[0],
                             color=0xf1c40f)
+        embed.set_footer(text="Created by Roflush // Para")
 
         await ctx.send(embed=embed)
 
 
     @commands.command(name='mcode', aliases=['mosecode'])
-    async def mose(self, ctx):
-        '''This is going to be a translater for something soon.'''
+    async def mose(self, ctx, message):
+        '''Morse code Translatior. It goes from text to morse'''
 
-        await ctx.send("Coming soon")
+        if message.isupper() == False:
+            message = message.upper()
+
+        MORSE_CODE_DICT = { 'A':'.-', 'B':'-...', 
+                    'C':'-.-.', 'D':'-..', 'E':'.', 
+                    'F':'..-.', 'G':'--.', 'H':'....', 
+                    'I':'..', 'J':'.---', 'K':'-.-', 
+                    'L':'.-..', 'M':'--', 'N':'-.', 
+                    'O':'---', 'P':'.--.', 'Q':'--.-', 
+                    'R':'.-.', 'S':'...', 'T':'-', 
+                    'U':'..-', 'V':'...-', 'W':'.--', 
+                    'X':'-..-', 'Y':'-.--', 'Z':'--..', 
+                    '1':'.----', '2':'..---', '3':'...--', 
+                    '4':'....-', '5':'.....', '6':'-....', 
+                    '7':'--...', '8':'---..', '9':'----.', 
+                    '0':'-----', ', ':'--..--', '.':'.-.-.-', 
+                    '?':'..--..', '/':'-..-.', '-':'-....-', 
+                    '(':'-.--.', ')':'-.--.-'}
+
+        cipher = ' '
+        for letter in message:
+            if letter != ' ':
+                
+                cipher += MORSE_CODE_DICT[letter] + ' '
+            else:
+                cipher += ' '
+
+            await ctx.send(cipher)
+
 
 
     @commands.command(name='deepfake', aliases=['FakeDI'])
@@ -99,24 +127,27 @@ class metaCog(commands.Cog):
 
         await ctx.send(embed= embed)
 
-    @commands.command(name='clean', aliases=['remove'], pass_context=True)
+    @commands.command(name='clean', aliases=['remove', 'clear'], pass_context=True)
     @commands.has_permissions(administrator=True)
     async def clean(self, ctx, limit: int):
         """Cleans out a textchat of trash."""
+
         await ctx.channel.purge(limit=limit)
         await ctx.send('Cleared by {}'.format(ctx.author.mention))
 
     @clean.error
     async def clear_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
+
             await ctx.send("You cant do that!")
 
     @commands.command(name='avatar', aliases=['custom'])
     async def custom_avatar(self, ctx, name: str):
         '''This doesn't work please don't use.'''
+
         response = requests.get(f"https://api.adorable.io/avatars/285/{name}@adorable.io.png")
 
-        get_img = response.json()
+        get_img = response.json()[0]
 
         embed=discord.Embed(title="Powered by aborable.io",
                                     url="http://avatars.adorable.io/",
@@ -126,6 +157,13 @@ class metaCog(commands.Cog):
         embed.set_footer(text="Created by RoFlush")
 
         await ctx.send(embed=embed)
+
+    @commands.command(name='fcompress', aliases=['filecom','filecompress','smallfile'])
+    async def filecomp(self, ctx, fcomp_op: str):
+        '''You can upload a file to discord, and the bot will compress it for you.'''
+        
+        await ctx.send("hahaha, Got you!")
+
 
 def setup(bot):
     bot.add_cog(metaCog(bot))

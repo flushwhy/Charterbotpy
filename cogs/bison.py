@@ -19,7 +19,10 @@ class bisonCog(commands.Cog):
                 "https://i.imgflip.com/4bnx3f.jpg", "https://i.imgflip.com/4bshon.jpg",]
         
         rndbison = random.choice(bisonmemes)
-        embed=discord.Embed(title="The crying Bison", url="https://dcharterbot.herokuapp.com/ ", description="Please checkout our website!", color=0x69daf1)
+        embed=discord.Embed(title="The crying Bison",
+                            url="https://dcharterbot.herokuapp.com/",
+                            description="Please checkout our website!",
+                            color=0x69daf1)
         embed.set_image(url=rndbison)
         embed.set_footer(text="Created by RoFlush // ParaCapone")
         await ctx.send(embed=embed)
