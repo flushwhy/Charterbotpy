@@ -1,6 +1,7 @@
 import discord
 import requests
 import json
+import time
 from discord.ext import commands
 from jokeapi import Jokes
 
@@ -64,10 +65,10 @@ class metaCog(commands.Cog):
 
     @commands.command(name='mcode', aliases=['mosecode'])
     async def mose(self, ctx, message):
-        '''Morse code Translatior. It goes from text to morse'''
+        '''Morse code Translatior. It goes from text to Morse'''
+    
 
-        if message.isupper() == False:
-            message = message.upper()
+        message = message.upper()
 
         MORSE_CODE_DICT = { 'A':'.-', 'B':'-...', 
                     'C':'-.-.', 'D':'-..', 'E':'.', 
@@ -92,9 +93,13 @@ class metaCog(commands.Cog):
                 cipher += MORSE_CODE_DICT[letter] + ' '
             else:
                 cipher += ' '
-
-            await ctx.send(cipher)
-
+                #Trying to fix it sending more then one message
+            ch = cipher
+            
+            #time.sleep(2)
+            await ctx.send(ch)
+        else:
+            await ctx.send("Sorry something when wrong \o/. Try again!")
 
 
     @commands.command(name='deepfake', aliases=['FakeDI'])
