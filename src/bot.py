@@ -28,20 +28,10 @@ if __name__ == '__main__':
 
 @bot.event
 async def on_ready():
-    print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
-
-    while True:
-
-        starttime = time.time
-
-        #CPU and RAM display for game output
-        mem = psutil.virtual_memory()
-        cpu = psutil.cpu_percent(interval=None)
-        time.sleep(60.0 - ((time.time() - starttime) % 60))
-
+    print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')   
 
     await bot.change_presence(status=discord.Status.online,
-    activity=discord.Game(f'Mem used: {mem.used}, CPU used: {cpu}'))
+    activity=discord.Game('Now runs on docker'))
     print(f'Successfully logged in and booted...!')
 
 
