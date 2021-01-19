@@ -104,7 +104,7 @@ class metaCog(commands.Cog):
 
     @commands.command(name='deepfake', aliases=['FakeDI'])
     async def randomuserid(self, ctx):
-        '''Retruns randomly made user info.'''
+        '''Retruns randomly made user info. Don't use it doesn't work'''
 
         response = requests.get("https://randomuser.me/api/")
 

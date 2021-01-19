@@ -9,7 +9,7 @@ class bisonCog(commands.Cog):
 
     
     @commands.command(name='crybison', aliases=['bimeme','nick','thesearemystations'])
-    async def nemamemes(self, ctx):
+    async def cryingbison(self, ctx):
         '''Displays memes about the eve corp Bison.'''
 
         bisonmemes =[               
