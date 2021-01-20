@@ -5,7 +5,7 @@ import sys, traceback
 import psutil
 import time
 
-get_token = open('token.txt', 'r').read()
+get_token = open('src/token.txt', 'r').read()
 
 def get_prefixes(bot, message):
     prefixes = ['.', '?', 'cb.']
@@ -30,7 +30,7 @@ if __name__ == '__main__':
 async def on_ready():
     print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')   
 
-    await bot.change_presence(status=discord.Status.online,
+    await bot.change_presence(status=discord.Status.idle,
     activity=discord.Game('Now runs on docker'))
     print(f'Successfully logged in and booted...!')
 
