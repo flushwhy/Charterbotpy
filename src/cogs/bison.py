@@ -13,10 +13,11 @@ class bisonCog(commands.Cog):
         '''Displays memes about the eve corp Bison.'''
 
         bisonmemes =[               
-                 "https://i.imgflip.com/4bkxt9.jpg", "https://i.imgflip.com/4bl473.jpg", "https://i.imgflip.com/4bl4gi.jpg",
-                "https://i.imgflip.com/4bl4nk.jpg", "https://i.imgflip.com/4bl4xv.jpg", "https://i.imgflip.com/4bl5e4.jpg",
-                "https://i.imgflip.com/4bl5k5.jpg", "https://i.imgflip.com/4bl5vb.jpg", "https://i.imgflip.com/4bl625.jpg",
-                "https://i.imgflip.com/4bnx3f.jpg", "https://i.imgflip.com/4bshon.jpg",]
+                    "https://i.imgflip.com/4bkxt9.jpg", "https://i.imgflip.com/4bl473.jpg", "https://i.imgflip.com/4bl4gi.jpg",
+                    "https://i.imgflip.com/4bl4nk.jpg", "https://i.imgflip.com/4bl4xv.jpg", "https://i.imgflip.com/4bl5e4.jpg",
+                    "https://i.imgflip.com/4bl5k5.jpg", "https://i.imgflip.com/4bl5vb.jpg", "https://i.imgflip.com/4bl625.jpg",
+                    "https://i.imgflip.com/4bnx3f.jpg", "https://i.imgflip.com/4bshon.jpg",
+                    ]
         
         rndbison = random.choice(bisonmemes)
         embed=discord.Embed(title="The crying Bison",

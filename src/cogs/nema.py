@@ -39,11 +39,13 @@ class nemaCog(commands.Cog):
     async def kaylon_kill_b(self, ctx):
         '''Displays funny kb deaths'''
 
-        killb = ["https://zkillboard.com/kill/80724213/", "https://zkillboard.com/kill/80724218/", "https://zkillboard.com/kill/80688690/",
+        killb = [
+                 "https://zkillboard.com/kill/80724213/", "https://zkillboard.com/kill/80724218/", "https://zkillboard.com/kill/80688690/",
                  "https://zkillboard.com/kill/80273641/", "https://zkillboard.com/kill/80259294/", "https://zkillboard.com/kill/80136487/",
                  "https://zkillboard.com/kill/80074436/", "https://zkillboard.com/kill/79925138/", "https://zkillboard.com/kill/79844487/",
                  "https://zkillboard.com/kill/79838029/", "https://zkillboard.com/kill/78861415/", "https://zkillboard.com/kill/81964469/",
-                 "https://zkillboard.com/kill/80586179/", "https://zkillboard.com/kill/79720936/", "https://zkillboard.com/kill/80844198/"]
+                 "https://zkillboard.com/kill/80586179/", "https://zkillboard.com/kill/79720936/", "https://zkillboard.com/kill/80844198/"
+                 ]
 
 
         rndkb = random.choice(killb)

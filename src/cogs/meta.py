@@ -11,7 +11,7 @@ class metaCog(commands.Cog):
 
 
     @commands.command(name='joke', aliases=['tellme','life','thetelling'])
-    async def nemamemes(self, ctx,):
+    async def nemamemes(self, ctx):
         '''Tells you a joke!'''
 
         j = Jokes()
