@@ -3,52 +3,10 @@ import requests
 import json
 import time
 from discord.ext import commands
-from jokeapi import Jokes
 
 class metaCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-
-    @commands.command(name='joke', aliases=['tellme','life','thetelling'])
-    async def nemamemes(self, ctx):
-        '''Tells you a joke!'''
-
-        await.send("The API is down, will read if comes back up")
-        #j = Jokes()
-        #joke = j.get_joke()[0]
-       # if joke["type"] == "single":
-       #     await ctx.send(joke["joke"])
-      #  else:
-       #     await ctx.send(joke["setup"])
-      #      await ctx.send("|| " + joke["delivery"] + " ||")
-
-    @commands.command(name='pg', aliases=['pgquotes', 'minds', 'ineedqq'])
-    async def programingquotes(self, ctx):
-        '''Post an embed of quotes from the minds of opensource.
-            No longer works don use'''
-
-
-        await ctx.send("No longer works, will update when it's fixed")
-
-        # The get request
-       # response = requests.get("https://programming-quotes-api.herokuapp.com/quotes/random")
-
-
-        # Pulling the quote and author from the requests.
-        # The "en" is the quote, that is how the API works-Not my chioce.
-       # quotes_qq = response.json()['en']
-       # author_qq = response.json()['author']
-
-       # embed=discord.Embed(title="Powered by Progamming quotes!",
-         #                   url="https://programming-quotes-api.herokuapp.com",
-         #                   description="Quote: " + quotes_qq,
-          #                  color=0x69daf1)
-
-        #embed.set_image(url="https://robohash.org/RoFlush.png")
-        #embed.set_footer(text= "Author: " + author_qq + " // " + "Created by RoFlush")
-       # await ctx.send(embed=embed)
-
     
     @commands.command(name='ron', aliases=['Swanson', 'ronswanson', 'ron-swanson'])
     async def RonSwanson_parks(self, ctx):

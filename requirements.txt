@@ -6,7 +6,6 @@ chardet
 discord
 discord.py==1.6
 idna
-jokeapi
 multidict
 psutil
 python-dotenv
