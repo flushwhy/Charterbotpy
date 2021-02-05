@@ -3,8 +3,9 @@ from discord.ext import commands
 
 import sys, traceback
 import psutil
+import time
 
-get_token = open('token.txt', 'r').read()
+get_token = open('src/token.txt', 'r').read()
 
 def get_prefixes(bot, message):
     prefixes = ['.', '?', 'cb.']
@@ -19,9 +20,6 @@ initial_extensions = [ 'cogs.nema',
                        'cogs.bison',
                        'cogs.meta', ]
 
-
-    #CPU and RAM display for game output
-
 bot = commands.Bot(command_prefix=get_prefixes, description='Charter Bot is the only chartered bot!')
 
 if __name__ == '__main__':
@@ -30,14 +28,10 @@ if __name__ == '__main__':
 
 @bot.event
 async def on_ready():
-    print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
+    print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')   
 
-    #CPU and RAM display for game output
-    mem = psutil.virtual_memory()
-    cpu = psutil.cpu_percent(interval=None)
-
-    await bot.change_presence(status=discord.Status.online,
-    activity=discord.Game(f'Mem used: {mem.used}, CPU used: {cpu}'))
+    await bot.change_presence(status=discord.Status.idle,
+    activity=discord.Game('Use cb.help to learn more!'))
     print(f'Successfully logged in and booted...!')
 
 

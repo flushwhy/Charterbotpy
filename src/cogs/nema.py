@@ -35,6 +35,29 @@ class nemaCog(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command(name='kaylonkb', aliases=['kbmeme'])
+    async def kaylon_kill_b(self, ctx):
+        '''Displays funny kb deaths'''
+
+        killb = [
+                 "https://zkillboard.com/kill/80724213/", "https://zkillboard.com/kill/80724218/", "https://zkillboard.com/kill/80688690/",
+                 "https://zkillboard.com/kill/80273641/", "https://zkillboard.com/kill/80259294/", "https://zkillboard.com/kill/80136487/",
+                 "https://zkillboard.com/kill/80074436/", "https://zkillboard.com/kill/79925138/", "https://zkillboard.com/kill/79844487/",
+                 "https://zkillboard.com/kill/79838029/", "https://zkillboard.com/kill/78861415/", "https://zkillboard.com/kill/81964469/",
+                 "https://zkillboard.com/kill/80586179/", "https://zkillboard.com/kill/79720936/", "https://zkillboard.com/kill/80844198/"
+                 ]
+
+
+        rndkb = random.choice(killb)
+        embed=discord.Embed(title="Nema's funnyist deaths",
+                            url=rndkb,
+                            description="Please checkout our website! Click the picure, or blue text above me!",
+                            color=0x69daf1)
+
+        embed.set_image(url=rndkb)
+        embed.set_footer(text="Created by RoFlush // ParaCapone")\
+        
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(nemaCog(bot))

@@ -1,49 +1,12 @@
 import discord
 import requests
 import json
+import time
 from discord.ext import commands
-from jokeapi import Jokes
 
 class metaCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-
-    @commands.command(name='joke', aliases=['tellme','life','thetelling'])
-    async def nemamemes(self, ctx,):
-        '''Tells you a joke!'''
-
-        j = Jokes()
-        joke = j.get_joke()[0]
-        if joke["type"] == "single":
-            await ctx.send(joke["joke"])
-        else:
-            await ctx.send(joke["setup"])
-            await ctx.send("|| " + joke["delivery"] + " ||")
-
-    @commands.command(name='pg', aliases=['pgquotes', 'minds', 'ineedqq'])
-    async def programingquotes(self, ctx):
-        '''Post an embed of quotes from the minds of opensource.'''
-
-
-        # The get request
-        response = requests.get("https://programming-quotes-api.herokuapp.com/quotes/random")
-
-
-        # Pulling the quote and author from the requests.
-        # The "en" is the quote, that is how the API works-Not my chioce.
-        quotes_qq = response.json()['en']
-        author_qq = response.json()['author']
-
-        embed=discord.Embed(title="Powered by Progamming quotes!",
-                            url="https://programming-quotes-api.herokuapp.com",
-                            description="Quote: " + quotes_qq,
-                            color=0x69daf1)
-
-        embed.set_image(url="https://robohash.org/RoFlush.png")
-        embed.set_footer(text= "Author: " + author_qq + " // " + "Created by RoFlush")
-        await ctx.send(embed=embed)
-
     
     @commands.command(name='ron', aliases=['Swanson', 'ronswanson', 'ron-swanson'])
     async def RonSwanson_parks(self, ctx):
@@ -64,10 +27,10 @@ class metaCog(commands.Cog):
 
     @commands.command(name='mcode', aliases=['mosecode'])
     async def mose(self, ctx, message):
-        '''Morse code Translatior. It goes from text to morse'''
+        '''Morse code Translatior. It goes from text to Morse'''
+    
 
-        if message.isupper() == False:
-            message = message.upper()
+        message = message.upper()
 
         MORSE_CODE_DICT = { 'A':'.-', 'B':'-...', 
                     'C':'-.-.', 'D':'-..', 'E':'.', 
@@ -92,14 +55,18 @@ class metaCog(commands.Cog):
                 cipher += MORSE_CODE_DICT[letter] + ' '
             else:
                 cipher += ' '
-
-            await ctx.send(cipher)
-
+                #Trying to fix it sending more then one message
+            ch = cipher
+            
+            #time.sleep(2)
+            await ctx.send(ch)
+        else:
+            await ctx.send("Sorry something when wrong \o/. Try again!")
 
 
     @commands.command(name='deepfake', aliases=['FakeDI'])
     async def randomuserid(self, ctx):
-        '''Retruns randomly made user info.'''
+        '''Retruns randomly made user info. Don't use it doesn't work'''
 
         response = requests.get("https://randomuser.me/api/")
 

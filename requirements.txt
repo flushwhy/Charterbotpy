@@ -1,0 +1,16 @@
+aiohttp
+async-timeout
+attrs
+certifi
+chardet
+discord
+discord.py==1.6
+idna
+multidict
+psutil
+python-dotenv
+requests
+simplejson
+typing-extensions
+urllib3
+yarl
