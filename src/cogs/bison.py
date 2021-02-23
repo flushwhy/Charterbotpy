@@ -7,7 +7,6 @@ class bisonCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    
     @commands.command(name='crybison', aliases=['bimeme','nick','thesearemystations'])
     async def cryingbison(self, ctx):
         '''Displays memes about the eve corp Bison.'''

@@ -4,9 +4,14 @@ import json
 import time
 from discord.ext import commands
 
+
+rapidapi_token = open('src/cogs/rapidapi-key.txt', 'r').read()
+
 class metaCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    
     
     @commands.command(name='ron', aliases=['Swanson', 'ronswanson', 'ron-swanson'])
     async def RonSwanson_parks(self, ctx):
@@ -130,6 +135,24 @@ class metaCog(commands.Cog):
         '''You can upload a file to discord, and the bot will compress it for you.'''
         
         await ctx.send("hahaha, Got you!")
+
+    @commands.command(name="mememkr", aliases=['mememaker', 'makemememes'])
+    async def makemorememes(self, ctx, top_name: str, bottom_name: str, memetype: str):
+        '''You can make memes in discord now!'''
+
+        url = "https://ronreiter-meme-generator.p.rapidapi.com/meme"
+
+        querystring = {"meme":memetype,"bottom":bottom_name,"top":top_name,"font_size":"50","font":"Impact"}
+
+        headers = {
+            'x-rapidapi-key': rapidapi_token,
+            'x-rapidapi-host': "ronreiter-meme-generator.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        await ctx.send(response)
+
 
 
 def setup(bot):
