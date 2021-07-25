@@ -19,7 +19,8 @@ def get_prefixes(bot, message):
 
 initial_extensions = [ 'cogs.nema',
                        'cogs.bison',
-                       'cogs.meta', ]
+                       'cogs.meta',
+                       'cogs.crypto']
 
 bot = discord.ext.commands.AutoShardedBot(command_prefix=get_prefixes, description='Charter Bot is the only chartered bot!')
 

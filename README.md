@@ -4,7 +4,7 @@ CharterBot is a discord that is bot that started has a meme.
 
 
 ## The best way to run
-Right now the quickest way to get started to is to run Native. 
+Right now the quickest way to get started is to run Native. 
 
 Just download the src files add a "token.txt" in the same folder has the "bot.py" file.
 
