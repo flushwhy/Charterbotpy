@@ -5,7 +5,7 @@ import sys, traceback
 import psutil
 import time
 
-get_token = open('src/token.txt', 'r').read()
+get_token = open('token.txt', 'r').read()
 
 
 def get_prefixes(bot, message):
@@ -21,7 +21,7 @@ initial_extensions = [ 'cogs.nema',
                        'cogs.bison',
                        'cogs.meta', ]
 
-bot = commands.Bot(command_prefix=get_prefixes, description='Charter Bot is the only chartered bot!')
+bot = discord.ext.commands.AutoShardedBot(command_prefix=get_prefixes, description='Charter Bot is the only chartered bot!')
 
 if __name__ == '__main__':
     for extension in initial_extensions:
