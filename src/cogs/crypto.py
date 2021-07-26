@@ -18,7 +18,7 @@ class cryptocog(commands.Cog):
 
     @commands.command(name="tokeneth", aliases=["tokenprice", "tokenpricecheck"])
     async def tokenVer(self, ctx, contract: str):
-
+        """Gets token price using contract addressses."""
         cg = cryptoapi()
         cg_return = cg.get_token_price(id="ethereum", contract_addresses=contract, vs_currencies="usd")
 
