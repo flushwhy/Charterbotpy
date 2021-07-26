@@ -1,15 +1,19 @@
 # CharterbotPy
 
-CharterBot is a discord that is bot that started has. 
-
-If you want to run it yourself you have a few ways you can run it
-> Natived or Docker We will talk about Docker.
+CharterBot is a discord that is bot that started has a meme. 
 
 
-## Running with Docker
+## The best way to run
+Right now the quickest way to get started is to run Native. 
 
-> You want to have Docker installed on your Computer before starting this. [Docker getting started](https://www.docker.com/get-started)
+Just download the src files add a "token.txt" in the same folder has the "bot.py" file.
 
- Open up a cmd and paste `docker pull roflush/charterbot:roflush`.
-> That is "src/" by default. If you want to move it, you have to edit the `Bot.py` file.
- Wiki coming soon!
+Then pasted your token in the token.txt file and run the "bot.py" file in CMD like
+
+~~~ 
+Python3 bot.py
+~~~
+or
+~~~
+py3 boy.py
+~~~
