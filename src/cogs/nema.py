@@ -64,7 +64,7 @@ class nemaCog(commands.Cog):
         rndkb = random.choice(killb)
         embed = discord.Embed(title="Nema's funnyist deaths",
                               url=rndkb,
-                              description="Please checkout our website! Click the picure, or blue text above me!",
+                              description="Click the picure, or blue text above me!",
                               color=0x69daf1)
 
         embed.set_image(url=rndkb)
