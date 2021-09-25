@@ -7,9 +7,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-discord = "1.4.1"
+discord = "1.7.3"
 requests = "*"
 jokeapi = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
