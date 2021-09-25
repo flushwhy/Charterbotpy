@@ -5,6 +5,8 @@ import time
 from discord.ext import commands
 
 
+rapidapi_token = open('src/cogs/rapidapi-key.txt', 'r').read()
+
 class metaCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -74,6 +76,48 @@ class metaCog(commands.Cog):
     async def clear_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
+
+
+    @commands.command(name='avatar', aliases=['custom'])
+    async def custom_avatar(self, ctx, name: str):
+        '''This doesn't work please don't use.'''
+
+        response = requests.get(f"https://api.adorable.io/avatars/285/{name}@adorable.io.png")
+
+        get_img = response.json()[0]
+
+        embed=discord.Embed(title="Powered by aborable.io",
+                                    url="http://avatars.adorable.io/",
+                                    color=0x69daf1)
+
+        embed.set_image(url=get_img[0])
+        embed.set_footer(text="Created by RoFlush")
+
+        await ctx.send(embed=embed)
+
+    @commands.command(name='fcompress', aliases=['filecom','filecompress','smallfile'])
+    async def filecomp(self, ctx, fcomp_op: str):
+        '''You can upload a file to discord, and the bot will compress it for you.'''
+        
+        await ctx.send("hahaha, Got you!")
+
+    @commands.command(name="mememkr", aliases=['mememaker', 'makemememes'])
+    async def makemorememes(self, ctx, top_name: str, bottom_name: str, memetype: str):
+        '''You can make memes in discord now!'''
+
+        url = "https://ronreiter-meme-generator.p.rapidapi.com/meme"
+
+        querystring = {"meme":memetype,"bottom":bottom_name,"top":top_name,"font_size":"50","font":"Impact"}
+
+        headers = {
+            'x-rapidapi-key': rapidapi_token,
+            'x-rapidapi-host': "ronreiter-meme-generator.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        await ctx.send(response)
+
 
 
 def setup(bot):

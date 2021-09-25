@@ -124,5 +124,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 token.txt
+src/cogs/rapidapi-key.txt
 .vscode/settings.json
 .vscode/launch.json
