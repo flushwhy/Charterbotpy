@@ -127,3 +127,5 @@ token.txt
 .vscode/settings.json
 .vscode/launch.json
 src/cogs/rapidapi-key.txt
+
+.idea/workspace.xml
