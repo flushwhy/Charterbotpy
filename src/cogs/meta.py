@@ -3,9 +3,10 @@ import requests
 import json
 import time
 from discord.ext import commands
+from dotenv import load_dotenv
 
-
-rapidapi_token = open('src/cogs/rapidapi-key.txt', 'r').read()
+load_dotenv()
+rapidapi_token = os.environ.get("RAPIAPI", None)
 
 class metaCog(commands.Cog):
     def __init__(self, bot):
