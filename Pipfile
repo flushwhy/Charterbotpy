@@ -10,6 +10,7 @@ verify_ssl = true
 discord = "1.7.3"
 requests = "*"
 jokeapi = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.9"
